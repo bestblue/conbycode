@@ -1,0 +1,93 @@
+#conbpaizafin
+x1=["japan","hokkaido","sapporo","okinawa","tokyo"]
+x2= [12800,0.55,0.19,0.1,1200]
+x3= [0.226,-2.15,1.74,3,2]
+l=["area","jinko","zougen"]
+i=0
+j=0
+
+
+puts""#indent
+print"area:  "
+    for j in 0..3  #x1.lengthÅàÂ\ #horizontal values
+        print x1[j]#area names
+        j+= 1
+        print" "
+    end
+
+puts "         "
+print"10jinko:"
+    for j in 0..3 #x1.lengthÅàÂ\ #horizontal values
+        print x2[j]#jinko values
+        j+= 1
+        print"  "
+    end
+puts "         "
+print"zougen:"
+    for j in 0..3 #x1.lengthÅàÂ\    #horizontal values
+        print x3[j]#zougen values
+        j+= 1
+        print"  "
+    end
+
+#jinko output
+#japan zougenritsu
+p1=0.00886    #2000
+b0=0    #2010
+y2=0
+
+puts "  "
+print"2000:  "
+    for j in 0..3#ExcelÌ·³ðüÍ
+    y2000=[]
+         y2=x2[j]*(1-x3[j]*0.05)*(1-p1)#zougen values
+         y2000.push(y2)
+        j+= 1
+        #print "%.2f " % y2 ¯êÌlªoé
+        print "%.2f " % y2000
+        print"  "
+    end   
+
+ puts "  "
+print"2010:  "
+    for j in 0..3#ExcelÌ·³ðüÍ
+    y2010=[]
+         y2=x2[j]*(1-0*0.05)*(1-b0)#zougen values
+         y2010.push(y2)
+        j+= 1
+        #print "%.2f " % y2 ¯êÌlªoé
+        print "%.2f " % y2010
+        print"  "
+    end  
+   
+A=[0.00886,    #2000  0
+    0,      #2010       1
+    -0.031, #2010-2020  2
+    -0.0983,#2010-2030  3
+    -0.193]#2010-2040  4
+
+for g in 2..4
+   puts""
+    print "20",10*g,":  "
+    for j in 0..3#ExcelÌ·³ðüÍ
+    y2020=[]
+         y2=x2[j]*(1+x3[j]*0.05)*(1+A[g])#zougen values
+         y2020 << y2 #.push('obj')Æ¯¶\bh
+        j+= 1
+        #print "%.2f " % y2 ¯êÌlªoé
+        print "%.2f " % y2020
+        print"  "#,y2020.length
+    end  
+    g +=1
+end   
+
+=begin
+#zñÇÁû@
+x2= [12800,0.55,0.19,0.1]
+for i in 0..2
+#x2.push(4)
+x2[i]=x2[i]+5
+i+=1
+end
+puts x2
+=end
